@@ -47,6 +47,9 @@ after_success:
 # before_deploy:
 # - "./build/travis-ci/prepare-upload.sh"
 
+before_deploy:
+- tar tvf "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" || true
+
 deploy:
   provider: releases
   api_key:
