@@ -41,8 +41,7 @@ script:
 - true
 
 after_success:
-- find /usr/local
-- find deps
+ - tar -cz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" --listed-incremental=data.snar /usr/local $(pwd)/deps
 
 ## deploy tagged artefacts to github
 # before_deploy:
