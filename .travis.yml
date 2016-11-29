@@ -39,7 +39,7 @@ install:
  - cd ..
 
 script:
- - tar -cz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" -X data.exclude /usr/local $(pwd)/deps
+ - tar -cvz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" -X data.exclude /usr/local $(pwd)/deps
 
 ## deploy tagged artefacts to github
 # before_deploy:
