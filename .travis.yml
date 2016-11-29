@@ -26,11 +26,12 @@ before_install:
  - brew install sdl homebrew/versions/glfw2 homebrew/versions/glfw3
  - brew install coreutils
  # get Pd
- - mkdir deps
  - wget http://msp.ucsd.edu/Software/pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
- - tar -xf pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
- - mv Pd-${PDVERSION}${PDVERSUFFIX}.app deps
- - ln -s deps/Pd-${PDVERSION}${PDVERSUFFIX}.app Pd.app
+ - mkdir deps
+ - cd deps
+ - tar -xvf ../pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
+ - chmod -R u+rXw .
+ - ln -s Pd-${PDVERSION}${PDVERSUFFIX}.app Pd.app
 
 script:
 - true
