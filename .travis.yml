@@ -18,7 +18,7 @@ os:
 
 before_install:
  # snapshot of /usr/local
- - tar --create --file /dev/null --listed-incremental=data.snar /usr/local
+ - find /usr/local -not -type d > data.exclude
 install:
  # install system dependencies
  - brew update
@@ -41,7 +41,7 @@ script:
 - true
 
 after_success:
- - tar -cz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" --listed-incremental=data.snar /usr/local $(pwd)/deps
+ - tar -cz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" -X data.exclude /usr/local $(pwd)/deps
 
 ## deploy tagged artefacts to github
 # before_deploy:
