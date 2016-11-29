@@ -8,8 +8,8 @@
 language:
 env:
   matrix:
-  - ARCH=amd64 PDVERSUFFIX=""
-  - ARCH=i386  PDVERSUFFIX="-64bit"
+  - ARCH=amd64 PDVERSUFFIX="-64bit"
+  - ARCH=i386  PDVERSUFFIX=""
   global:
   - PDVERSION=0.46-5
 
