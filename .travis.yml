@@ -16,7 +16,7 @@ env:
 os:
   - osx
 
-before_install:
+install:
  # install system dependencies
  - brew update
  - brew install coreutils
