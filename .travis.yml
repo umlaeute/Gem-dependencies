@@ -1,0 +1,55 @@
+## Travis-CI configuration for Gem-dependencies
+
+# this pre-builds dependencies for Gem, and makes them available for later-download
+#
+# target architectures: osx(amd64) and osx(i386)
+# deployment: the build artefacts are deployed via tags on github.com
+
+language:
+env:
+  matrix:
+  - ARCH=amd64 PDVERSUFFIX=""
+  - ARCH=i386  PDVERSUFFIX="-64bit"
+  global:
+  - PDVERSION=0.46-5
+
+os:
+  - osx
+
+before_install:
+ # install system dependencies
+ - brew update
+ - brew install pkg-config gettext
+ - brew install fribidi --universal
+ - brew link gettext --force
+ - brew install imagemagick ftgl
+ - brew install sdl homebrew/versions/glfw2 homebrew/versions/glfw3
+ - brew install coreutils
+ # get Pd
+ - mkdir deps
+ - wget http://msp.ucsd.edu/Software/pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
+ - tar -xf pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
+ - mv Pd-${PDVERSION}${PDVERSUFFIX}.app deps
+ - ln -s deps/Pd-${PDVERSION}${PDVERSUFFIX}.app Pd.app
+
+script:
+- true
+
+after_success:
+- find /usr/local
+- find deps
+
+## deploy tagged artefacts to github
+# before_deploy:
+# - "./build/travis-ci/prepare-upload.sh"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: mW3u93mi2ZFXB3u32+/LWcePBPwhSE5k/MvrxVnM3i1bgwMK//+7V9enJAmL645LWQyBtUz5q7Jv5m2Vk1W4xd9j0j/hI/QchblPfok1Mo8TcCdnyCgbUvjIJwP+5X0d4ALscn7rYzPxxtEvLrXRLc6IXqYRpCl9tBjOOCM9ysY=
+  file: "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz"
+  skip_cleanup: true
+  on:
+    repo: umlaeute/Gem-dependencies
+    tags: true
+    all_branches: true
