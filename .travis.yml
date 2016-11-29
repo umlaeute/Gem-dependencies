@@ -16,6 +16,9 @@ env:
 os:
   - osx
 
+before_install:
+ # snapshot of /usr/local
+ - tar --create --file /dev/null --listed-incremental=data.snar /usr/local
 install:
  # install system dependencies
  - brew update
