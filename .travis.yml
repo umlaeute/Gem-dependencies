@@ -19,6 +19,7 @@ os:
 
 before_install:
  # snapshot of /usr/local
+ - ls -l /usr/local/Cellar/
  - find /usr/local -not -type d > data.exclude
 install:
  # install system dependencies
@@ -39,6 +40,7 @@ install:
  - cd ..
 
 script:
+ - ls -l /usr/local/Cellar/
  - tar -cvz --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tgz" -X data.exclude /usr/local $(pwd)/deps
 
 ## deploy tagged artefacts to github
