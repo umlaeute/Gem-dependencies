@@ -42,14 +42,14 @@ install:
 script:
  - tar -cz --file brew.tgz --directory /usr/local/Cellar freetype fribidi ftgl gettext glfw2 glfw3 glib imagemagick libffi libpng libtiff pcre sdl xz
  - tar -cz --file deps.tgz deps
- - tar -cv --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tar" brew.tgz deps.tgz
+ - tar -c --file "GemDeps_${TRAVIS_TAG}_${TRAVIS_OS_NAME}-${ARCH}.tar" brew.tgz deps.tgz
 
 deploy:
   provider: releases
   api_key:
     # generated with 'travis encrypt ${GITHUB_OAUTH_TOKEN}'
     secure: "OsJ+PkpRRbt1zRtnUOiRLEX3DKxymZt0K8IDoMGzt556D8jV23SOl6v/Vwf582FYOUnJPyyICO65sfaerLa8PE3+GN7nk257TIkEm21C0KF0ovlhNHQVsruEVqbQXlwiKixENtyhDKGps7eHuSdLKplhLwcdHIS/ltKkEBcvaTOmxOVDFHs20gPXZ3nU2lJcgT+iHrjyAAOFaMEo5gJH/hJKSNz+T4mPHiRWM8fTKm9giK2HvxmOL67Keo2JTinDyT1JT00OHwGsdE/81OBvMMPxg5JxzliXpfM04Prny1e9U0BswwQVwBdsw/UTuibYJVrmhvdXTlOXu5ZKgfmD2m+pS6YSMSxTYAMfqhc1BajbSlTQ8iduWQsiSTj0BlSBzD9CO4YOkECnOuu8zfXr8AAkF1Ryj2sHU+ejawT8r1LfZ7WhfXrdKwHxH/PSyz7cEZgnexUiU1F8K1TfW/vMF9XEpEQsIhRryWVbPzgJ9RKlVw4tERFEcCIqyyVC9tf90rgxncqZ7d+CgrEGh62LdD22gd8+xYjUAZvkBWV7OnT5xszBe3XacxzrLwfGQMeNXiXZmCUJT/RG96QIK6oMG8oVCLzNbfB3YhflvYQP++GjPU6xB/OhyZe/5hA/qc0/iJHp1dpCtwYNswWbCh1kgBerHzJ6zWLt7L1Xirt74mA="
-  file: "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tar"
+  file: "GemDeps_${TRAVIS_TAG}_${TRAVIS_OS_NAME}-${ARCH}.tar"
   skip_cleanup: true
   on:
     repo: umlaeute/Gem-dependencies
