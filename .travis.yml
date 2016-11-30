@@ -56,3 +56,6 @@ deploy:
     repo: umlaeute/Gem-dependencies
     tags: true
     all_branches: true
+
+after_script:
+ - ls -lh
