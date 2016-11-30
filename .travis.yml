@@ -40,7 +40,6 @@ install:
  - cd ..
 
 script:
- - ls -l /usr/local/Cellar/
  - tar -cz --file brew.tgz --directory /usr/local/Cellar freetype fribidi ftgl gettext glfw2 glfw3 glib imagemagick libffi libpng libtiff pcre sdl xz
  - tar -cz --file deps.tgz deps
  - tar -cv --file "GemDeps-${TRAVIS_TAG}-${TRAVIS_OS_NAME}${ARCH}.tar" brew.tgz deps.tgz
@@ -59,3 +58,4 @@ deploy:
 
 after_script:
  - ls -lh
+ - ls -l /usr/local/Cellar/
