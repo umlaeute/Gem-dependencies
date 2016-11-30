@@ -34,7 +34,7 @@ install:
  - wget http://msp.ucsd.edu/Software/pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
  - mkdir deps
  - cd deps
- - tar -xvf ../pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
+ - tar -xf ../pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
  - chmod -R u+rXw .
  - ln -s Pd-${PDVERSION}${PDVERSUFFIX}.app Pd.app
  - cd ..
