@@ -23,13 +23,7 @@ before_install:
  - find /usr/local -not -type d > data.exclude
 install:
  # install system dependencies
- - brew update
- - brew install coreutils
- - brew install pkg-config gettext
- - brew link gettext --force
- - brew install fribidi --universal
- - brew install imagemagick ftgl
- - brew install sdl homebrew/versions/glfw2 homebrew/versions/glfw3
+ - ./brew-GemDeps.sh
  # get Pd
  - wget http://msp.ucsd.edu/Software/pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
  - mkdir deps
