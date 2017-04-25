@@ -1,8 +1,7 @@
 #!/bin/sh
 
 install_upgrade() {
-    local pkgs
-    brew install "${pkgs}" || (brew upgrade "${pkgs}" && brew cleanup "${pkgs}")
+    brew install "$@" || (brew upgrade "$@" && brew cleanup "$@")
 }
 
 brew update
