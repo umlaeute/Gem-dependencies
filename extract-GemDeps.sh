@@ -25,13 +25,18 @@ if [  ! -e "${BASEDIR}/$1" ]; then
     usage
 fi
 }
+BREW() {
+  echo "BREW $@"
+  brew "$@"
+}
 
 extract_brew() {
     checkpkg brew.tgz
     tar -xvf brew.tgz --directory /usr/local/Cellar
     tar -tf  brew.tgz | grep "/$" | grep -v "/.*/" | while read p; do
         pkg=${p%/}
-        brew link ${pkg}
+        BREW unlink ${pkg}
+        BREW link ${pkg}
     done                                                   
 }
 extract_deps() {
