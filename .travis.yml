@@ -24,7 +24,12 @@ before_install:
 install:
  # install system dependencies
  - brew update
- - ./brew-GemDeps.sh
+ - ./brew-install coreutils
+ - ./brew-install pkg-config gettext
+ - brew link gettext --force
+ - ./brew-install fribidi --universal
+ - ./brew-install imagemagick ftgl
+ - ./brew-install sdl glfw@2 glfw
  # get Pd
  - wget http://msp.ucsd.edu/Software/pd-${PDVERSION}${PDVERSUFFIX}.mac.tar.gz
  - mkdir deps
