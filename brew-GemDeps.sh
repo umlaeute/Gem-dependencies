@@ -5,7 +5,6 @@ install_upgrade() {
     brew install "$@" || (brew upgrade "$@" && brew cleanup "$@")
 }
 
-brew update
 install_upgrade coreutils
 install_upgrade pkg-config gettext
 brew link gettext --force
