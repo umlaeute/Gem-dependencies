@@ -1,7 +1,7 @@
 #!/bin/sh
 
 install_upgrade() {
-    echo" BREW install/upgrade $@"
+    echo "BREW install/upgrade $@"
     brew install "$@" || (brew upgrade "$@" && brew cleanup "$@")
 }
 
