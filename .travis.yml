@@ -53,3 +53,5 @@ deploy:
 after_script:
  - ls -lh
  - ls -l /usr/local/Cellar/
+ - brew --prefix fribidi
+ - brew --cellar fribidi
